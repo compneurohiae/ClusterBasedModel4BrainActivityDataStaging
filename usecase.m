@@ -1,7 +1,7 @@
 
 % results in transitionData and kld
 
-load dataexample.dat
+load dataexample.mat
 
 freqsamp = 2000;
 
