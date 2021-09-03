@@ -6,8 +6,6 @@ Pipeline to find brain and behavioral states transitions from local field potent
 
 ## Functions
 
-Function for data partitioning and call Lempel-Ziv calculations
-
 * lzfunction: Function to calculates Lempel-Ziv complexity from time series data.
   - Inputs:
     * data: Time series;
