@@ -2,7 +2,7 @@
 
 ## Description
 
-Pipeline para determinar a transição entre estados/comportamentos cerebrais
+Pipeline to find brain and behavioral states transitions from local field potential (LFP) data.
 
 ## Functions
 
@@ -10,22 +10,23 @@ Function for data partitioning and call Lempel-Ziv calculations
 
 * lzfunction: Function to calculates Lempel-Ziv complexity from time series data.
   - Inputs:
-    * inputA: desc;
+    * data: Time series;
   - Outputs:
-    * outputA: desc;
+    * clzsample : Lempel-Ziv complexity value;
 * lzmain: Function to generate a complexity time series from LFP time series. This function implements a data partitioning of LPF data to get Lempel-Ziv complexity (see lzfunction) for each partition.
   - Inputs:
-    * inputA: desc;
+    * x: Time series;
+    * dec: Decimate parameter;
+    * ell: Time window size in points;
+    * step: Moving step;
   - Outputs:
-    * outputA: desc;
+    * clz: Lempel-Ziv complexity time series;
 
 ## Getting Started
 
-To execute the pipeline, the user need to download dataexample.mat in their MATLAB folder and run usecase.m script. This script will execute the following steps:
+To execute the pipeline, the user need to download this repository and execute the following steps:
 
-* step1: desc
-.
-.
-.
+* step1: Copy dataexample.mat to your MATLAB folder;
+* step2: Run usecase.m script;
 
 To return (descrever saida).
