@@ -1,4 +1,4 @@
-% FUNCTION: lzfunction.m
+% FUNCTION: lzfunctionsample.m
 
 % Function for estimating the Lempel-Ziv complexity as per:
 % "Analysis of biomedical signals by the Lempel-Ziv complexity:
@@ -8,7 +8,7 @@
 % Input is a digital string, so conversion from signal to a digital stream
 % must be carried out a priori
 
-function clzsample = lzfunction(data)
+function clzsample = lzfunctionsample(data)
 
 nrow = size(data, 1);
 ncol = size(data, 2);
@@ -22,5 +22,5 @@ clzran = lzcomp(xr);
 clzsample = zeros(ncol, 1);
 
 for j = 1 : ncol
-    clzsample(j) = (lzcomp(data(:, j)) - clzcte) / (clzran - clzcte);
+    clzsample(j) = (lzfunction(data(:, j)) - clzcte) / (clzran - clzcte);
 end
