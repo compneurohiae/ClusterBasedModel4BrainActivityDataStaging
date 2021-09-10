@@ -1,8 +1,8 @@
 % FUNCTION: lzmain.m
 
-% Function for data partitioning and call Lempel-Ziv calculations
+% Function for data partitioning and Lempel-Ziv time series calculation
 
-clz = lzmain(x,dec,ell,step);
+clz = lzmain(x, dec, ell, step);
 
 % INPUT
 % x    : time series
