@@ -1,12 +1,13 @@
 % FUNCTION: divKLD.m
 
-% Function for estimating the Kullback leibler divergence
+% Function for estimating the Kullback leibler divergence betwwen two
+% clusters
 
 function [dkl] = divKLD(px, py)
 
 % INPUT
-% px: clusters in the time domain
-% py: clusters in the state domain
+% px: first cluster in the state domain
+% py: second cluster in the state domain
 
 dkl = zeros(1, numel(px));
 

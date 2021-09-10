@@ -5,13 +5,21 @@ load dataexample.mat
 
 freqsamp = 2000;
 
+nclusters = 10;
+
 data = dataexample;
 
-clz = lzmain(data, 5, 10000, 400);
+step = 5;
 
-[transitionLZ, kld] = get_transitions(clz, 10);
+timewindow = 10000;
 
-transitionData = transitionLZ * freqsamp;
+decparameter = 400;
+
+clz = lzmain(data, step, timewindow, decparameter);
+
+[transitionLZ, kld] = get_transitions(clz, nclusters);
+
+transitionData = transitionLZ * freqsamp + timewindow;
 
 
 

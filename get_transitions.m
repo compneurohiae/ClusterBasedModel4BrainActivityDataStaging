@@ -2,7 +2,7 @@
 
 % Function for estimating the signal transitions in the step-like signal
 
-[transition, kld] = get_transitions(clz, c)
+function [transition, kld] = get_transitions(clz, c)
 
 % INPUT
 % clz : Lempel-Ziv complexity
@@ -31,7 +31,7 @@ for ind = 1 : c - 1
     x1 = exp(-(escx - mux(ind)).^2/(2*varx(ind)))/(sqrt(2*pi*varx(ind)));
     x2 = exp(-(escx - mux(ind+1)).^2/(2*varx(ind+1)))/(sqrt(2*pi*varx(ind+1)));
     tindx = find(escx>= mux(ind) & escx <= mux(ind+1));
-    tind = find((abs(x1(tindx)-x2(tindx)))==min(abs(x1(tindx)-x2(tindx))) );
+    tind = find((abs(x1(tindx)-x2(tindx))) == min(abs(x1(tindx)-x2(tindx))) );
     transition(ind) = escx(tindx(tind));
 end
 transition = fix(1 + (npts-1) * (transition + L) / 2*L);
