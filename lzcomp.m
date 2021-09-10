@@ -1,4 +1,4 @@
-% FUNCTION: lzcomp.m
+% FUNCTION: lzfunction.m
 
 % Function for estimating the Kolmogorov complexity as per:
 % "Easily Calculable Measure for the Complexity of Spatiotemporal Patterns"
@@ -7,7 +7,7 @@
 % Input is a digital string, so conversion from signal to a digital stream
 % must be carried out a priori
 
-function clz = lzcomp(x)
+function clz = lzfunction(x)
 
 n = length(x);
 c = 1;
