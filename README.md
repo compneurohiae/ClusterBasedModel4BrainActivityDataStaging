@@ -1,5 +1,3 @@
-   Fiz algumas descrições. ainda falta descrever a saída do usecase.m
-
 # Cluster Based Brain Activity Data Staging
 
 ## Description
@@ -8,57 +6,64 @@ Pipeline to find brain and behavioral states transitions from local field potent
 
 ## Functions
 
-* lzcomp: Function to calculate the Lempel-Ziv complexity from time series data.
+* lzfunction.m: Function to calculate the Lempel-Ziv complexity to a binary series.
   - Inputs:
-    * x: Time series;
+    * x: binary series;
   - Outputs:
-    * clz : Lempel-Ziv complexity value;
+    * clz: Lempel-Ziv complexity value;
 
-* lzfunction: Function to calculate the sample Lempel-Ziv complexity from time series data (see lzcomp).
+* lzsample.m: Function to calculate the sample Lempel-Ziv complexity to a finite time series data (see lzfunction.m).
   - Inputs:
     * data: Time series;
   - Outputs:
-    * clzsample : sample Lempel-Ziv complexity value;
+    * clzsample: sample Lempel-Ziv complexity value;
 
-* lzmain: Function to generate a complexity time series from LFP time series. This function implements a data partitioning of LFP signal to get the Lempel-Ziv complexity (see lzfunction) for each partition.
+* lzmain.m: Function to generate a complexity time series from LFP time series. This function implements a data partitioning of LFP signal to get the Lempel-Ziv complexity (see lzsample.m) for each partition.
   - Inputs:
     * x: Time series;
     * dec: Decimate parameter;
     * ell: Time window size in points;
-    * step: Moving step;
+    * step: Moving-window step;
   - Outputs:
     * clz: Lempel-Ziv complexity time series;
 
-* cwm_states: Function to generate the clusters in time and state domains using the cluster weighted method CWM (see get_transitions).
-  - Inputs:
-    * y: Time series;
-    * nclusters: number of clusters;
-  - Outputs:
-    * muy: mean of the state domain cluster;
-    * vary: variance of the state domain cluster;
-    * mux: mean of the time domain cluster;
-    * varx: variance of the time domain cluster;
-
-* divKLD: Function to calculate the Kullback Leibler divergence KLD (see get_transitions).
+* divKLD.m: Function to calculate the Kullback Leibler divergence KLD.
   - Inputs:
     * px: first cluster;
     * py: second cluster;
   - Outputs:
-    * dkl: Kullback Leibler value;
+    * dkl: Kullback-Leibler divergence value;
 
-* get_transition: Function to calculate the signal transitions applying the CWM to the Lempel-Ziv complexity time series and then calculating the KLD.
+* cwm_states.m: Function to generate the clusters in time and state domains using the cluster weighted method CWM.
   - Inputs:
-    * clz: Lempel-Ziv complexity;
+    * y: Time series;
+    * nclusters: number of clusters;
+  - Outputs:
+    * muy: vector with the mean values of the clusters in state domain;
+    * vary: vector with the variance values of the clusters in state domain;
+    * mux: vector with the mean values of the clusters in time domain;
+    * varx: vector with the variance values of the clusters in time domain domain;
+
+* get_transition.m: Function to calculate the signal transitions applying the CWM to the Lempel-Ziv complexity time series (see cwm_states.m).
+  - Inputs:
+    * clz: Lempel-Ziv complexity time series;
     * c: number of clusters;
   - Outputs:
-    * transitions: signal transitions in time domain;
-    * kld: respective Kullback Leibler values;
+    * transitions: vector with the time transitions;
+    * kld: vector with Kullback-Leibler divergence values paired with the "transitions" vector;
 
 ## Getting Started
 
-To execute the pipeline, the user need to download this repository and execute the following steps:
+To execute the pipeline, the user need to download this repository and execute the following steps (considering the usecase.m as example):
 
 * step1: Copy dataexample.mat to your MATLAB folder;
 * step2: Run usecase.m script;
-
-To return (descrever saida).
+  - Parameters:
+    * freqsamp: Sampling frequency;
+    * nclusters: Number of clusters;
+    * step: Moving-window step for Lempel-Ziv complexity time series;
+    * timewindow: Time window size in points;
+    * decparameter: parameter for subsampling  decimation;
+  - Outputs:
+    * transitionData: vector with the time transitions;
+    * kld: vector with Kullback-Leibler divergence values paired with the "transitions" vector;
