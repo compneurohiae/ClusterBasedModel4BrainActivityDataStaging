@@ -57,7 +57,9 @@ Pipeline to find brain and behavioral states transitions from local field potent
 To execute the pipeline, the user need to download this repository and execute the following steps (considering the usecase.m as example):
 
 * step1: Copy dataexample.mat to your MATLAB folder;
-* step2: Run usecase.m script;
+* step2: Copy the matlab functions to your MATLAB folder;
+* step3: Set the pathway to the MATLAB folder;
+* step4: Run usecase.m script;
   - Parameters:
     * freqsamp: Sampling frequency;
     * nclusters: Number of clusters;
